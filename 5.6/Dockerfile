@@ -42,6 +42,15 @@ COPY ./s2i/bin/ $STI_SCRIPTS_PATH
 COPY ./contrib/ /opt/app-root
 RUN cp /opt/app-root/etc/conf.d/php-fpm/pool.conf /etc/php-fpm.d/www.conf
 RUN cp /opt/app-root/etc/conf.d/php-fpm/fpm.conf /etc/php-fpm.conf
+RUN cp /opt/app-root/etc/conf.d/php-fpm/pools/rosi.conf /etc/php-fpm.d/rosi.conf
+RUN cp /opt/app-root/etc/conf.d/php-fpm/pools/rosi-webservice.conf /etc/php-fpm.d/rosi-webservice.conf
+RUN cp /opt/app-root/etc/conf.d/php-fpm/pools/cacti.conf /etc/php-fpm.d/cacti.conf
+RUN cp /opt/app-root/etc/conf.d/php-fpm/pools/lm.conf /etc/php-fpm.d/lm.conf
+
+
+RUN cp /opt/app-root/etc/conf.d/php/php.ini /etc/php.d/php.ini
+RUN cp /opt/app-root/etc/conf.d/php/php-batch.ini /etc/php.d/php-batch.ini
+RUN cp /opt/app-root/etc/conf.d/php/oci8.ini /etc/php.d/30-oci8.ini
 RUN mkdir /tmp/sessions && \
 mkdir -p /var/lib/nginx && \
 mkdir -p /var/log/nginx && \
